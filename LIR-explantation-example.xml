@@ -1,0 +1,92 @@
+<!--
+ This is an example LIR explantation bundle
+ -->
+<Bundle xmlns="http://hl7.org/fhir">
+  <type value="batch"/>
+  <entry>
+    <resource>
+      <Procedure>
+        <meta>
+          <security>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="ANONY"/>
+            <display value="anonymize"/>
+          </security>
+        </meta>
+        <status value="completed"/>
+        <!-- only accept "completed" for LIR -->
+        <subject/>
+        <!-- patient is "masked" for LIR-->
+        <code>
+          <!-- Moet deze erin? DHD -->
+          <coding>
+            <system value="DHD"/>
+            <code value=""/>
+          </coding>
+        </code>
+        <performedDateTime value=""/>
+        <performer>
+          <actor>
+            <reference value="Organization?identifier=01169570"/>
+            <!-- KVK UMCG# -->
+          </actor>
+        </performer>
+        <focalDevice>
+          <action>
+            <coding>
+              <system value="http://hl7.org/fhir/device-action"/>
+              <code value="explanted"/>
+            </coding>
+          </action>
+          <manipulated>
+            <reference value="Device/example-knee"/>
+          </manipulated>
+        </focalDevice>
+      </Procedure>
+    </resource>
+  </entry>
+  <entry>
+    <resource>
+      <Device>
+        <meta>
+          <security>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="ANONY"/>
+            <display value="anonymize"/>
+          </security>
+        </meta>
+        <id value="example-knee"/>
+        <identifier>
+          <type>
+            <coding>
+              <system value="http://hl7.org/fhir/identifier-type"/>
+              <code value="SNO"/>
+              <display value="Serial Number"/>
+            </coding>
+          </type>
+          <value value="00591707014"/>
+          <!-- is REF het serialnumber? Zit nu niet in de GS1 barcode -->
+        </identifier>
+        <udi>
+          <deviceIdentifier value="(01)08890240000791(17)190731(10)99999999"/>
+          <name value="NexGen Complete Knee Solution"/>
+        </udi>
+        <status value="inactive"/>
+        <type>
+          <!-- zie LIR inclusielijst -->
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="463239005"/>
+            <display value="Posterior-stabilized total knee prosthesis (physical object)"/>
+          </coding>
+          <text value="Knieprothese"/>
+        </type>
+        <lotNumber value="99999999"/>
+        <manufacturer value="Zimmer"/>
+        <expirationDate value="2019-07-31"/>
+        <patient/>
+        <!-- patient is masked for LIR -->
+      </Device>
+    </resource>
+  </entry>
+</Bundle>

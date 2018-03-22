@@ -1,0 +1,99 @@
+{
+    "resourceType": "Bundle",
+    "type": "batch",
+    "entry": [
+        {
+            "resource": {
+                "resourceType": "Procedure",
+                "meta": {
+                    "security": [
+                        {
+                            "system": "http://hl7.org/fhir/v3/ActCode",
+                            "code": "ANONY",
+                            "display": "anonymize"
+                        }
+                    ]
+                },
+                "status": "completed",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "DHD",
+                            "code": ""
+                        }
+                    ]
+                },
+                "performedDateTime": "",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization?identifier=01169570"
+                        }
+                    }
+                ],
+                "focalDevice": [
+                    {
+                        "action": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/device-action",
+                                    "code": "implanted"
+                                }
+                            ]
+                        },
+                        "manipulated": {
+                            "reference": "Device/example-knee"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Device",
+                "id": "example-knee",
+                "meta": {
+                    "security": [
+                        {
+                            "system": "http://hl7.org/fhir/v3/ActCode",
+                            "code": "ANONY",
+                            "display": "anonymize"
+                        }
+                    ]
+                },
+                "identifier": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/identifier-type",
+                                    "code": "SNO",
+                                    "display": "Serial Number"
+                                }
+                            ]
+                        },
+                        "value": "00591707014"
+                    }
+                ],
+                "udi": {
+                    "deviceIdentifier": "(01)08890240000791(17)190731(10)99999999",
+                    "name": "NexGen Complete Knee Solution"
+                },
+                "status": "active",
+                "type": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "463239005",
+                            "display": "Posterior-stabilized total knee prosthesis (physical object)"
+                        }
+                    ],
+                    "text": "Knieprothese"
+                },
+                "lotNumber": "99999999",
+                "manufacturer": "Zimmer",
+                "expirationDate": "2019-07-31"
+            }
+        }
+    ]
+}
