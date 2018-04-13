@@ -1,6 +1,6 @@
 {
     "resourceType": "Bundle",
-    "type": "batch",
+    "type": "collection",
     "entry": [
         {
             "resource": {
@@ -8,9 +8,9 @@
                 "meta": {
                     "security": [
                         {
-                            "system": "http://hl7.org/fhir/v3/ActCode",
-                            "code": "ANONY",
-                            "display": "anonymize"
+                            "system": "http://hl7.org/fhir/v3/ObservationValue",
+                            "code": "ANONYED",
+                            "display": "anonymized"
                         }
                     ]
                 },
@@ -19,7 +19,7 @@
                     "coding": [
                         {
                             "system": "DHD",
-                            "code": ""
+                            "code": "example"
                         }
                     ]
                 },
@@ -27,7 +27,10 @@
                 "performer": [
                     {
                         "actor": {
-                            "reference": "Organization?identifier=01169570"
+                            "identifier": {
+                                "system": "http://fhir.nl/fhir/NamingSystem/agb-z",
+                                "value": "17081430"
+                            }
                         }
                     }
                 ],
@@ -56,8 +59,8 @@
                     "security": [
                         {
                             "system": "http://hl7.org/fhir/v3/ActCode",
-                            "code": "ANONY",
-                            "display": "anonymize"
+                            "code": "ANONYED",
+                            "display": "anonymized"
                         }
                     ]
                 },

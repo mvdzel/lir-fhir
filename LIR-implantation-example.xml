@@ -2,15 +2,17 @@
  This is an example LIR implantation bundle
  -->
 <Bundle xmlns="http://hl7.org/fhir">
-  <type value="batch"/>
+  <!-- batch is voor transactions.. misschien is collection of searchset beter, kijk even naar de types hier: http://hl7.org/fhir/valueset-bundle-type.html -->
+  <type value="collection"/>
   <entry>
     <resource>
       <Procedure>
         <meta>
           <security>
-            <system value="http://hl7.org/fhir/v3/ActCode"/>
-            <code value="ANONY"/>
-            <display value="anonymize"/>
+            <system value="http://hl7.org/fhir/v3/ObservationValue"/>
+            <!-- Marten: van anonymize, naar anonymized, zie hier voor het verschil: http://hl7.org/fhir/valueset-security-labels.html -->
+            <code value="ANONYED"/>
+            <display value="anonymized"/>
           </security>
         </meta>
         <status value="completed"/>
@@ -19,16 +21,25 @@
         <!-- patient is "masked" for LIR-->
         <code>
           <!-- Moet deze erin? DHD -->
+          <!-- Marten: system, moet of een url of een OID zijn. DHD volstaat niet -->
           <coding>
             <system value="DHD"/>
-            <code value=""/>
+            <!-- Marten: was leeg, een element moet een value hebben (niet leeg), of kinderen in fhir). -->
+            <code value="example"/>
           </coding>
         </code>
         <performedDateTime value=""/>
         <performer>
           <actor>
-            <reference value="Organization?identifier=01169570"/>
-            <!-- UMCG KVK# -->
+            <!--
+            <reference value="Organization?identifier=01169570"/> 
+            Marten: Mag geen search query in een reference, beter is om het identifier element te gebruiken.
+            -->
+            <identifier>
+              <system value="http://fhir.nl/fhir/NamingSystem/agb-z" />
+              <value value="17081430"/>
+            </identifier>
+            <!-- Marten: UMCG AGB ipv KVK -->
           </actor>
         </performer>
         <focalDevice>
@@ -51,8 +62,8 @@
         <meta>
           <security>
             <system value="http://hl7.org/fhir/v3/ActCode"/>
-            <code value="ANONY"/>
-            <display value="anonymize"/>
+            <code value="ANONYED"/>
+            <display value="anonymized"/>
           </security>
         </meta>
         <id value="example-knee"/>
@@ -65,6 +76,7 @@
             </coding>
           </type>
           <value value="00591707014"/>
+          <!-- Marten: ik zou een System bedenken voor REF in barcodes ipv serial number gebruiken als type. -->
           <!-- is REF het serialnumber? Zit nu niet in de GS1 barcode -->
         </identifier>
         <udi>
